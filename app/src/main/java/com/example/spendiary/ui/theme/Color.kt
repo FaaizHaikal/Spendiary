@@ -2,10 +2,13 @@ package com.example.spendiary.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val DarkPrimary = Color(0xff121212)
+val DarkBackground = Color(0xff1e1e1e)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val White100 = Color(0xffffffff)
+val White87 = Color(0xdeffffff)
+val White60 = Color(0x99ffffff)
+
+val BlueAccent = Color(0xff3a9ad6)
+val RedAccent = Color(0xfffb4a4d)
+val GreenAccent = Color(0xff30d749)
