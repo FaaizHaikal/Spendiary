@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.spendiary.ui.components.BarChart
 
 @Composable
 fun HomeScreen(
@@ -63,5 +64,16 @@ fun ThisMonthExpenses() {
             Text(text = "Remaining Balance", style = MaterialTheme.typography.bodySmall)
             Text(text = "Rp. 1.500.000,00", style = MaterialTheme.typography.bodySmall)
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        BarChart(
+            data = listOf(
+                "1st March" to 150f,
+                "2nd March" to 200f,
+                "3rd March" to 180f
+            ),
+            chartHeight = 100f
+        )
     }
 }
