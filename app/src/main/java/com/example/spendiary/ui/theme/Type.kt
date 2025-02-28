@@ -16,10 +16,17 @@ var InterFont = FontFamily(
 )
 
 val Typography = Typography(
-    bodyLarge = TextStyle(
+    bodyMedium = TextStyle(
         fontFamily = InterFont,
-        fontSize = 16.sp,
-        fontWeight = FontWeight.Normal
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Normal,
+        color = White87
+    ),
+    bodySmall = TextStyle(
+        fontFamily = InterFont,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Normal,
+        color = White60
     ),
     titleLarge = TextStyle(
         fontFamily = InterFont,
