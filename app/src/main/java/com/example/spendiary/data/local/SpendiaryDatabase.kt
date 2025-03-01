@@ -6,16 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.spendiary.data.converter.DateConverter
-import com.example.spendiary.data.local.dao.ExpenseDao
-import com.example.spendiary.data.local.dao.SavingDao
-import com.example.spendiary.data.local.entities.Expense
-import com.example.spendiary.data.local.entities.Saving
+import com.example.spendiary.data.local.dao.ExpensesDao
+import com.example.spendiary.data.local.dao.SavingsDao
+import com.example.spendiary.data.local.entities.Expenses
+import com.example.spendiary.data.local.entities.Savings
 
-@Database(entities = [Expense::class, Saving::class], version = 1)
+@Database(entities = [Expenses::class, Savings::class], version = 1)
 @TypeConverters(DateConverter::class)
 abstract class SpendiaryDatabase: RoomDatabase() {
-    abstract fun expenseDao(): ExpenseDao
-    abstract fun savingDao(): SavingDao
+    abstract fun expensesDao(): ExpensesDao
+    abstract fun savingsDao(): SavingsDao
 
     companion object {
         @Volatile
