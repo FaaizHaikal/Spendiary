@@ -27,7 +27,7 @@ fun HomeScreen(
         ThisMonthExpenses()
         Spacer(modifier = Modifier.height(16.dp))
         TotalSavings()
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(32.dp))
         ButtonGroup()
     }
 }
@@ -195,7 +195,7 @@ fun TotalSavings() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(text = "This Month Status", style = MaterialTheme.typography.bodySmall)
+            Text(text = "Monthly Status", style = MaterialTheme.typography.bodySmall)
             Text(text = "Done", style = MaterialTheme.typography.bodySmall, color = GreenAccent)
         }
 
