@@ -23,5 +23,6 @@ interface SavingDao {
     @Query("SELECT * FROM Savings ORDER BY date DESC")
     fun getAllSavings(): Flow<List<Saving>>
 
-    // TODO: Query to get current year saving
+    @Query("SELECT * FROM Savings WHERE strftime('%Y', date / 1000, 'unixepoch') = strftime('%Y', 'now')")
+    fun getCurrentYearSavings(): Flow<List<Saving>>
 }
