@@ -10,7 +10,7 @@ import com.example.spendiary.data.local.entities.Saving
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface SavingDao {
+interface SavingsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSaving(saving: Saving)
 
@@ -21,7 +21,7 @@ interface SavingDao {
     suspend fun deleteSaving(saving: Saving)
 
     @Query("SELECT * FROM Savings ORDER BY date DESC")
-    fun getAllSavings(): Flow<List<Saving>>
+    fun getSavingsOrderedByDate(): Flow<List<Saving>>
 
     @Query("SELECT * FROM Savings WHERE strftime('%Y', date / 1000, 'unixepoch') = strftime('%Y', 'now')")
     fun getCurrentYearSavings(): Flow<List<Saving>>

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import com.example.spendiary.data.local.entities.Expense
 
 @Dao
-interface ExpenseDao {
+interface ExpensesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertExpense(expense: Expense)
 
@@ -20,6 +20,9 @@ interface ExpenseDao {
     @Delete
     suspend fun deleteExpense(expense: Expense)
 
-    @Query("SELECT * FROM expenses WHERE strftime('%Y-%m', date / 1000, 'unixepoch') = strftime('%Y-%m', 'now')")
+    @Query("SELECT * FROM Expenses ORDER BY date DESC")
+    fun getExpensesOrderedByDate(): Flow<List<Expense>>
+
+    @Query("SELECT * FROM Expenses WHERE strftime('%Y-%m', date / 1000, 'unixepoch') = strftime('%Y-%m', 'now')")
     fun getCurrentMonthExpenses(): Flow<List<Expense>>
 }
