@@ -11,4 +11,5 @@ val White60 = Color(0x99ffffff)
 
 val BlueAccent = Color(0xff3a9ad6)
 val RedAccent = Color(0xfffb4a4d)
+val RedAccent2 = Color(0xfffe6c6e)
 val GreenAccent = Color(0xff30d749)
