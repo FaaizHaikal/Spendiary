@@ -8,10 +8,10 @@ import androidx.room.TypeConverters
 import com.example.spendiary.data.converter.DateConverter
 import com.example.spendiary.data.local.dao.ExpensesDao
 import com.example.spendiary.data.local.dao.SavingsDao
-import com.example.spendiary.data.local.entities.Expenses
-import com.example.spendiary.data.local.entities.Savings
+import com.example.spendiary.data.local.entities.Expense
+import com.example.spendiary.data.local.entities.Saving
 
-@Database(entities = [Expenses::class, Savings::class], version = 1)
+@Database(entities = [Expense::class, Saving::class], version = 1)
 @TypeConverters(DateConverter::class)
 abstract class SpendiaryDatabase: RoomDatabase() {
     abstract fun expensesDao(): ExpensesDao
