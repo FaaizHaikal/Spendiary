@@ -71,9 +71,36 @@ fun ThisMonthExpenses() {
             data = listOf(
                 "1st March" to 150f,
                 "2nd March" to 200f,
-                "3rd March" to 180f
+                "3rd March" to 180f,
+                "4th March" to 150f,
+                "5th March" to 200f,
+                "6th March" to 180f,
+                "7th March" to 150f,
+                "8th March" to 200f,
+                "9th March" to 180f,
+                "10th March" to 150f,
+                "12th March" to 200f,
+                "13th March" to 180f,
+                "14th March" to 150f,
+                "15th March" to 200f,
+                "16th March" to 180f,
+                "17th March" to 150f,
+                "18th March" to 200f,
+                "19th March" to 180f,
+                "20th March" to 150f,
+                "21st March" to 150f,
+                "22nd March" to 200f,
+                "23rd March" to 180f,
+                "24th March" to 150f,
+                "25th March" to 200f,
+                "26th March" to 180f,
+                "27th March" to 150f,
+                "28th March" to 200f,
+                "29th March" to 180f,
+                "30th March" to 150f,
+                "31th March" to 180f,
             ),
-            chartHeight = 100f
+            chartHeight = 150f
         )
     }
 }

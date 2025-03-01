@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.ui.graphics.Color
-import com.example.spendiary.ui.theme.RedAccent
+import com.example.spendiary.ui.theme.RedAccent2
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.getValue
@@ -24,8 +24,8 @@ fun BarChart(
     data: List<Pair<String, Float>>,
     modifier: Modifier = Modifier,
     chartHeight: Float = 200f,
-    barWidth: Float = 20f,
-    barColor: Color = RedAccent
+    barSpacing: Float = 10f,
+    barColor: Color = RedAccent2
 ) {
     var hoveredIndex by remember { mutableStateOf<Int?>(null) }
 
@@ -45,15 +45,16 @@ fun BarChart(
                 }
         ) {
             val maxY = data.maxOf { it.second } // Highest y value in data
-            val spacing = size.width / data.size // Bar spacing
+            val totalSpacing = barSpacing * (data.size - 1)
+            val barWidth = (size.width - totalSpacing) / data.size // Width for each bar
 
             data.forEachIndexed {index, (x, y) ->
-                val barHeight = y / maxY * chartHeight
-                val offsetX = index * spacing + (spacing - barWidth) / 2
+                val barHeight = y / maxY * size.height// Height for each bar
+                val topLeftX = index * (barWidth + barSpacing)
 
                 drawRect(
                     color = barColor,
-                    topLeft = Offset(offsetX, size.height - barHeight),
+                    topLeft = Offset(topLeftX, size.height - barHeight),
                     size = Size(barWidth, barHeight)
                 )
 
