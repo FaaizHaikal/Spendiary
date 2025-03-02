@@ -22,6 +22,6 @@ fun DatePicker(selectedDate: LocalDate, onDateSelected: (LocalDate) -> Unit) {
     )
 
     Button(onClick = { datePickerDialog.show() }) {
-        Text("Select Date: ${selectedDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))}")
+        Text("Date: ${selectedDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))}")
     }
 }
