@@ -11,7 +11,7 @@ import com.example.spendiary.data.local.dao.SavingsDao
 import com.example.spendiary.data.local.entities.Expense
 import com.example.spendiary.data.local.entities.Saving
 
-@Database(entities = [Expense::class, Saving::class], version = 1)
+@Database(entities = [Expense::class, Saving::class], version = 1, exportSchema = false)
 @TypeConverters(DateConverter::class)
 abstract class SpendiaryDatabase: RoomDatabase() {
     abstract fun expensesDao(): ExpensesDao
