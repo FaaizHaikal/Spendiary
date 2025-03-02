@@ -10,8 +10,13 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.spendiary.ui.components.AddExpenseDialog
 import com.example.spendiary.ui.components.BarChart
 import com.example.spendiary.ui.components.RoundButton
 import com.example.spendiary.ui.theme.BlueAccent
@@ -21,6 +26,8 @@ import com.example.spendiary.ui.theme.RedAccent
 @Composable
 fun HomeScreen(
 ) {
+    var showAddExpenseDialog by remember { mutableStateOf(false) }
+
     Column (
         modifier = Modifier.padding(horizontal = 24.dp, vertical = 72.dp)
     ) {
@@ -28,12 +35,22 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(16.dp))
         TotalSavings()
         Spacer(modifier = Modifier.height(32.dp))
-        ButtonGroup()
+        ButtonGroup(
+            onAddExpense = { showAddExpenseDialog = true }
+        )
+    }
+
+    if (showAddExpenseDialog) {
+        AddExpenseDialog(
+            onDismiss = { showAddExpenseDialog = false }
+        )
     }
 }
 
 @Composable
-fun ButtonGroup() {
+fun ButtonGroup(
+    onAddExpense: () -> Unit
+) {
     Row (
         modifier = Modifier
             .fillMaxWidth()
@@ -58,7 +75,7 @@ fun ButtonGroup() {
             icon = Icons.Default.ShoppingCart,
             text = "Add Expense",
             color = RedAccent,
-            onClick = { println("Add Expense") }
+            onClick = { onAddExpense() }
         )
     }
 }

@@ -20,6 +20,8 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.spendiary.utils.CurrencyVisualTransformation
+import com.example.spendiary.utils.DecimalFormatter
 import java.time.LocalDate
 
 @Composable
@@ -29,6 +31,7 @@ fun AddExpenseDialog(
     var description by remember { mutableStateOf("") }
     var amount by remember { mutableStateOf("") }
     var date by remember { mutableStateOf(LocalDate.now()) }
+    val decimalFormatter = DecimalFormatter()
 
     AlertDialog(
         onDismissRequest = { onDismiss() },
@@ -40,6 +43,7 @@ fun AddExpenseDialog(
                     value = description,
                     onValueChange = { description = it },
                     label = { Text("Description") },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     singleLine = true
                 )
 
@@ -47,9 +51,11 @@ fun AddExpenseDialog(
 
                 OutlinedTextField(
                     value = amount,
-                    onValueChange = { amount = it.filter { it.isDigit() } },
+                    onValueChange = { amount = decimalFormatter.cleanup(it)
+                    },
                     label = { Text("Amount") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                    visualTransformation = CurrencyVisualTransformation(decimalFormatter),
                     singleLine = true
                 )
 
