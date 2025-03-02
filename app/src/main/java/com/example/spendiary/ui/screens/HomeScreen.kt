@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.spendiary.ui.components.AddExpenseDialog
+import com.example.spendiary.ui.components.AddSavingDialog
 import com.example.spendiary.ui.components.BarChart
 import com.example.spendiary.ui.components.RoundButton
 import com.example.spendiary.ui.theme.BlueAccent
@@ -27,6 +28,7 @@ import com.example.spendiary.ui.theme.RedAccent
 fun HomeScreen(
 ) {
     var showAddExpenseDialog by remember { mutableStateOf(false) }
+    var showAddSavingDialog by remember { mutableStateOf(false) }
 
     Column (
         modifier = Modifier.padding(horizontal = 24.dp, vertical = 72.dp)
@@ -36,7 +38,8 @@ fun HomeScreen(
         TotalSavings()
         Spacer(modifier = Modifier.height(32.dp))
         ButtonGroup(
-            onAddExpense = { showAddExpenseDialog = true }
+            onAddExpense = { showAddExpenseDialog = true },
+            onAddSaving = { showAddSavingDialog = true }
         )
     }
 
@@ -45,11 +48,18 @@ fun HomeScreen(
             onDismiss = { showAddExpenseDialog = false }
         )
     }
+
+    if (showAddSavingDialog) {
+        AddSavingDialog (
+            onDismiss = { showAddSavingDialog = false }
+        )
+    }
 }
 
 @Composable
 fun ButtonGroup(
-    onAddExpense: () -> Unit
+    onAddExpense: () -> Unit,
+    onAddSaving: () -> Unit
 ) {
     Row (
         modifier = Modifier
@@ -61,7 +71,7 @@ fun ButtonGroup(
             icon = Icons.Default.Star,
             text = "Add Savings",
             color = GreenAccent,
-            onClick = { println("Add Savings") }
+            onClick = { onAddSaving() }
         )
 
         RoundButton(
